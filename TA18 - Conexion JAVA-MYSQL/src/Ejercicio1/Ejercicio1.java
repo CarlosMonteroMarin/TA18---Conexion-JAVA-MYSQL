@@ -17,21 +17,25 @@ public class Ejercicio1 {
 			
 			FuncionesGenericas.createDB("Ejercicio1_desde_java", conexion);
 			
-			FuncionesGenericas.createTable("Ejercicio1_desde_java", "fabricantes", conexion,"(Codigo INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(50))");	
+			FuncionesGenericas.createTable("Ejercicio1_desde_java", "fabricantes", conexion,"(codigo INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(50))");	
 			FuncionesEspecificas1.insertDataFabricantes("Ejercicio1_desde_java", "fabricantes", "Bosh", conexion);
 			FuncionesEspecificas1.insertDataFabricantes("Ejercicio1_desde_java", "fabricantes", "Audi", conexion);
 			FuncionesEspecificas1.insertDataFabricantes("Ejercicio1_desde_java", "fabricantes", "Mercedes", conexion);
 			
 			
 			
-			FuncionesGenericas.createTable("Ejercicio1_desde_java", "articulos", conexion,"(Codigo INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(100),precio int, fabricante int)");	
+			FuncionesGenericas.createTable("Ejercicio1_desde_java", "articulos", conexion,"(codigo INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(100),precio int, fabricante int)");	
 			FuncionesEspecificas1.insertDataArticulos("Ejercicio1_desde_java", "articulos", "Tuerca", 3, 1, conexion);
 			FuncionesEspecificas1.insertDataArticulos("Ejercicio1_desde_java", "articulos", "Tornillo", 33, 2, conexion);
 			FuncionesEspecificas1.insertDataArticulos("Ejercicio1_desde_java", "articulos", "Clavo", 35, 3, conexion);
 			
-			FuncionesGenericas.deleteRecord("Ejercicio1_desde_java", "fabricantes","codigo", "1", conexion);
+			FuncionesGenericas.update("Ejercicio1_desde_java", "articulos", "precio = 66666", "codigo=2", conexion);
+			FuncionesGenericas.update("Ejercicio1_desde_java", "fabricantes", "nombre = 'ford'", "codigo=1", conexion);
+
+			FuncionesGenericas.deleteRecordInt("Ejercicio1_desde_java", "fabricantes","codigo", 1, conexion);
 			FuncionesEspecificas1.getValuesFabricantes("Ejercicio1_desde_java", "fabricantes", conexion);
-			FuncionesGenericas.deleteRecord("Ejercicio1_desde_java", "articulos", "codigo","1", conexion);
+			
+			FuncionesGenericas.deleteRecordInt("Ejercicio1_desde_java", "articulos", "codigo",1, conexion);
 			FuncionesEspecificas1.getValuesArticulos("Ejercicio1_desde_java", "articulos", conexion);
 
 			FuncionesGenericas.closeConnection(conexion);

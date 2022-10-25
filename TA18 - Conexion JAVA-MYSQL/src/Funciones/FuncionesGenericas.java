@@ -29,7 +29,7 @@ public class FuncionesGenericas {
 			
 		}
 	}
-	
+
 	
 	public static void createTable(String db, String name, Connection conexion, String info_columnas_tabla) {
 		try {
@@ -39,23 +39,21 @@ public class FuncionesGenericas {
 			
 			String Query ="CREATE TABLE "+name+""
 					+info_columnas_tabla;
-					
-			//"(ID INT PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(50), apellido VARCHAR(50),edad VARCHAR(3), sexo VARCHAR(1))";
-			
+		
 			Statement st = conexion.createStatement();
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Tabla creada con exito!");
 	
 			
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());		
-			System.out.println("Error al crear la tabla.");
+			System.out.println(ex.getMessage());	
+			JOptionPane.showMessageDialog(null, "Error al crear la tabla");
 		}
 	}
 	
 
 	
-	public static void deleteRecord (String db, String table_name, String primaryKey, String ID, Connection conexion) {
+	public static void deleteRecordInt (String db, String table_name, String primaryKey, int ID, Connection conexion) {
 		try {
 			String Queryd = "USE "+db+";";
 			Statement stdb = conexion.createStatement();
@@ -69,6 +67,40 @@ public class FuncionesGenericas {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error al borrar el registro especificado.");
 		}
+	}
+	
+	public static void deleteRecordString (String db, String table_name, String primaryKey, String ID, Connection conexion) {
+		try {
+			String Queryd = "USE "+db+";";
+			Statement stdb = conexion.createStatement();
+			stdb.executeUpdate(Queryd);
+			
+			String Query = " DELETE FROM "+table_name + " WHERE "+primaryKey+" = \"" +ID+ "\"";
+			Statement st = conexion.createStatement();
+			st.executeUpdate(Query);
+			JOptionPane.showMessageDialog(null, "Registro borrado con éxito.");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al borrar el registro especificado.");
+		}
+	}
+	
+	
+	public static void update(String db, String table_name, String modif_columna, String condicion, Connection conexion) {
+		try {
+			String Queryd = "USE "+db+";";
+			Statement stdb = conexion.createStatement();
+			stdb.executeUpdate(Queryd);
+			
+			String Query = "UPDATE "+table_name+" SET "+ modif_columna +" WHERE "+condicion;
+			Statement st = conexion.createStatement();
+			st.executeUpdate(Query);
+			JOptionPane.showMessageDialog(null, "Registro modificado con éxito.");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al modificar el registro especificado.");
+		}
+		
 	}
 	
 }

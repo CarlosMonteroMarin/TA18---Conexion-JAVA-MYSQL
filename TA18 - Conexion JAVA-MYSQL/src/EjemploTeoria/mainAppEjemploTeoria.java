@@ -23,7 +23,7 @@ public class mainAppEjemploTeoria {
 					+ "apellido VARCHAR(50),edad VARCHAR(3), sexo VARCHAR(1))");
 			FuncionesEspecificas.insertData("Prueba2_desde_java", "tabla1_prueba", "pepe", "montilla", "25", "M", conexion);
 			FuncionesEspecificas.getValues("Prueba2_desde_java", "tabla1_prueba", conexion);
-			FuncionesGenericas.deleteRecord("Prueba2_desde_java", "tabla1_prueba", "ID", "1", conexion);
+			FuncionesGenericas.deleteRecordString("Prueba2_desde_java", "tabla1_prueba", "ID", "1", conexion);
 			FuncionesGenericas.closeConnection(conexion);
 			
 		} catch (SQLException | ClassNotFoundException ex) {

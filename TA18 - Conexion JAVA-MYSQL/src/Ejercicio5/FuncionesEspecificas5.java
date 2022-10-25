@@ -1,4 +1,4 @@
-package Ejercicio4;
+package Ejercicio5;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,17 +6,17 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class FuncionesEspecificas4 {
+public class FuncionesEspecificas5 {
 
-	public static void insertDataPeliculas (String db, String table_name, String nombre, int calificacion_edad, Connection conexion ) {
+	public static void insertDataPeliculas (String db, String table_name, int numero, int capacidad, Connection conexion ) {
 		try {
 			String Queryd = "USE "+db+";";
 			Statement stdb = conexion.createStatement();
 			stdb.executeUpdate(Queryd);
 			
-			String Query = "INSERT INTO "+table_name+" (nombre, calificacionedad) VALUE("
-					+ "\"" +nombre+"\", "
-					+ "\"" +calificacion_edad+"\"); ";
+			String Query = "INSERT INTO "+table_name+" (numero,capacidad) VALUE("
+					+ "\"" +numero+"\", "
+					+ "\"" +capacidad+"\"); ";
 		
 			Statement st = conexion.createStatement();
 			st.executeUpdate(Query);
@@ -30,15 +30,17 @@ public class FuncionesEspecificas4 {
 	}	
 	
 	
-	public static void insertDataSalas (String db, String table_name,String nombre, int pelicula, Connection conexion ) {
+	public static void insertDataSalas (String db, String table_name, String dni, String nom_apels, String dni_jefe, int despacho, Connection conexion ) {
 		try {
 			String Queryd = "USE "+db+";";
 			Statement stdb = conexion.createStatement();
 			stdb.executeUpdate(Queryd);
 			
-			String Query = "INSERT INTO "+table_name+" (nombre, pelicula) VALUE("
-					+ "\"" +nombre+"\", "
-					+ "\"" +pelicula+"\"); ";
+			String Query = "INSERT INTO "+table_name+" (dni,nom_apels, dni_jefe, despacho) VALUE("
+					+ "\"" +dni+"\", "
+					+ "\"" +nom_apels+"\", "
+					+ "\"" +dni_jefe+"\", "
+					+ "\"" +despacho+"\"); ";
 			
 			Statement st = conexion.createStatement();
 			st.executeUpdate(Query);
@@ -65,9 +67,8 @@ public class FuncionesEspecificas4 {
 			System.out.println("------------------");
 			System.out.println("TABLA: "+table_name);
 			while (resultSet.next()) {
-				System.out.println("Codigo: "+ resultSet.getString("codigo")+" "
-						+ "Nombre: "+ resultSet.getString("nombre")+" "
-						+ "Calificación edad: "+ resultSet.getString("calificacionedad"));
+				System.out.println("Número : "+ resultSet.getString("numero")+" "
+						+ "Capacidad: "+ resultSet.getString("capacidad"));
 			}
 			
 		} catch (SQLException ex) {
@@ -89,9 +90,10 @@ public class FuncionesEspecificas4 {
 			System.out.println("------------------");
 			System.out.println("TABLA: "+table_name);
 			while (resultSet.next()) {
-				System.out.println("Codigo: "+ resultSet.getString("codigo")+" "
-						+ "Nombre: "+ resultSet.getString("nombre")+" "
-						+ "Pelicula: "+ resultSet.getString("pelicula"));
+				System.out.println("DNI: "+ resultSet.getString("dni")+" "
+						+ "Nombre y apellidos: "+ resultSet.getString("nom_apels")+" "
+						+ "DNI jefe: "+ resultSet.getString("dni_jefe")+" "
+						+ "Despacho: "+ resultSet.getString("despacho"));
 						
 			}
 			
