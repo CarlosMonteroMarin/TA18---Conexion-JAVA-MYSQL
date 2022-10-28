@@ -26,7 +26,7 @@ public class Ejercicio7 {
 			FuncionesEspecificas7.insertDataCientificos("Ejercicio7_desde_java", "cientificos", "2222222a","chin champu",conexion);
 			FuncionesEspecificas7.insertDataCientificos("Ejercicio7_desde_java", "cientificos", "3333333a","Alberto montero",conexion);
 			
-			
+			  
 			
 			FuncionesGenericas.createTable("Ejercicio7_desde_java", "proyecto", conexion,
 					"(`id` char(4) NOT NULL,\r\n"
